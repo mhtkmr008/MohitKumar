@@ -1,3 +1,5 @@
 this is done by me
 
 i think i am okay with git now
+
+git -set--upstream link master
