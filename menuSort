@@ -1,0 +1,39 @@
+#!/bin/bash
+
+echo "1: add Elemrnts 2:sort accending 3:sort decending 4:exit"
+choice=7
+while [ $choice -ne 4 ]
+do
+read -p "Enter a choice" choice
+case $choice in
+1)
+echo "Enter 5 numbers"
+read -p "num1" num1
+read -p "num2" num2
+read -p "num3" num3
+read -p "num4" num4
+read -p "num5" num5
+echo "$num1">numbers.txt
+echo "$num2">>numbers.txt
+echo "$num3">>numbers.txt
+echo "$num4">>numbers.txt
+echo "$num5">>numbers.txt
+;;
+2)
+echo "Accending Order"
+sort -n numbers.txt
+;;
+3)
+echo "Decending Order"
+sort -nr numbers.txt
+;;
+4)
+echo "exit"
+rm numbers.txt
+echo "file deleted"
+;;
+*)
+echo "Enter correct choice"
+;;
+esac
+done

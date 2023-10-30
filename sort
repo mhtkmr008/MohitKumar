@@ -1,0 +1,52 @@
+
+
+
+#!/bin/bash
+
+for ((i=1; i<=5; i++))
+do
+    read -p "Enter a number: " num
+    echo "$num" >> numbers1.txt
+done
+
+# Sort in ascending order and save to a new file
+sort -n numbers1.txt > ascending_sorted.txt
+
+# Sort in descending order and save to a new file
+sort -nr numbers1.txt > descending_sorted.txt
+
+# Display the sorted results
+echo "Ascending order:"
+cat ascending_sorted.txt
+
+echo "Descending order:"
+cat descending_sorted.txt
+
+# Remove the temporary files
+rm ascending_sorted.txt descending_sorted.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#for((i=1;i<=5;i++))
+#do
+#read -p "Enter a number" num
+#echo "$num">>numbers1.txt
+#done
+
+#sort -n numbers1.txt
+#sort -r numbers1.txt
+
+#rm numbers1.txt
+

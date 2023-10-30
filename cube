@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -p "Enter a number" num
+for((i=1;i<=$num;i++))
+do
+cube=1
+for((j=1;j<=3;j++))
+do
+cube=$(($cube * $i))
+done
+echo $cube
+done

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -p "1: Add password 2: check password 3:exit" choice
+while [ $choice -ne 3 ]
+do
+read -p "Enter a choice" choice
+case $choice in
+1)
+read -p "enter password" password
+echo "password created"
+;;
+2)
+read -p "Enter password" pass
+if [ $password -eq $pass ]
+then
+echo "Correct password"
+else
+echo "Incoreect password"
+fi
+;;
+3)
+echo "EXIT"
+;;
+*)
+echo "Enter Correct Choice"
+;;
+esac
+done
