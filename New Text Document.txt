@@ -1,1 +1,228 @@
-this is for git 
+#!/bin/bash
+echo -e "1:Add record\n2:Delete record\n\
+3:Find record\n4:EXIT"
+
+choice=0
+
+until [ $choice -eq 4 ]
+ do
+ 
+  echo -e "\n"
+  read -p "Enter the choice: " choice
+
+     case $choice in
+         1)
+            read -p "Enter the Roll No.:" rollno
+              echo "Roll NO => $rollno" >> $rollno.txt
+              
+              read -p "Enter Student Name:" name
+                echo "Name => $name" >> $rollno.txt
+                
+               read -p "Enter the Sem:" sem
+                echo "Semester => $sem" >> $rollno.txt
+                
+               read -p "Enter the Subject 1 Marks:" marks1
+                echo "Subject1 => $marks1" >> $rollno.txt
+               
+               read -p "Enter the Subject 2 Marks:" marks2
+                echo "Subject2 => $marks2" >> $rollno.txt
+               
+               read -p "Enter the Subject 3 Marks:" marks3
+                echo "Subject3 => $marks3" >> $rollno.txt
+                
+                echo -e "\n-------Record Stored-------"
+                
+           ;;
+                
+           2)
+                read -p "Enter Student roll no.:" rollno
+                   
+                   rm $rollno.txt
+                   
+                   echo -e "\n-------record Deleted-------"
+                   
+           ;;
+                        
+           3)          
+                  read -p "Enter Student roll no.:" rollno
+                   echo -e "\n"
+                   cat $rollno.txt          
+           ;;               
+           4)
+                echo "exiting...."
+                exit
+           ;;    
+           *)
+                echo "Enter right option"
+           ;;
+      esac                       
+  done
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+positve=0
+negative=0
+zero=0
+
+for ((i=0;i<10;i++))
+ do
+     read -p "Enter Number $i" num
+   if [ $num -gt 0 ]
+   then
+  	 positive=$(($positive + 1))
+   elif [ $num -lt 0 ]
+   then
+    	 negative=$(($negative + 1))
+   else
+    	zero=$(($zero + 1))
+   fi
+ done
+
+ echo " Total positive Number:$positive"
+ echo " Total negative Number:$negative"
+ echo " Total Zero:$zero"
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+     touch temp.txt
+
+echo "Enter the 5 Number:"
+for((i=1;i<=5;i++))
+  do
+    read -p "Enter Number $i:" num$i
+done
+
+for((j=1;j<=5;j++))
+  do
+    echo $((num$j)) >> temp.txt
+done
+
+sort temp.txt > temp1.txt
+ echo "Max:"
+ tail -n 1 temp1.txt
+
+ echo "Min:"
+ head -n 1 temp1.txt
+ rm temp1.txt
+ rm temp.txt
+
+
+
+
+
+
+
+#!/bin/bash
+
+touch temp.txt
+
+read -p "Enter the word: "  word
+
+echo "$word" > temp.txt
+
+  rev_word=$(rev temp.txt)
+  
+  if [ $rev_word = $word ]
+  then
+    echo " Word is Pallindrome"
+    
+  else
+    echo " Word is not Pallindrome"
+  fi   
+    rm temp.txt
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+read -p "Enter the Number:" num
+sum=0
+
+while [ $num -ne 0 ]
+ do
+ 
+   digit=$((num%10))
+   sum=$((sum+digit))
+   num=$((num/10))
+   
+ done
+ 
+ echo "Sum is $sum"
+
+
+
+
+
+
+
+
+#!/bin/bas
+
+ echo -e "1:Create User\n2:Delete User\n3:Create Group\n4:Delete group\n5:EXIT"
+ exit_flag=""
+ until [ "exit_flag" = "True" ]
+ 
+   do
+ 
+  read -p "Enter choice:" choice
+   
+    case $choice in
+         1)
+         
+            read -p "Enter the user name:" name
+            sudo adduser $name --force-badname
+            echo -e "\n$name User added\n"
+             
+             ;;
+         2)
+         
+             read -p "Enter the user name:" name
+             sudo deluser $name
+             echo -e "\n$name User deleted\n"
+              
+             ;;
+         3)
+            read -p "Enter the Group name:" name
+            sudo addgroup $name --force-badname
+            echo -e "\n$name Group added\n"
+             ;;
+         4)
+            read -p "Enter the Group name:" name
+            sudo delgroup $name
+            echo -e "\n$name Group deleted\n"
+             ;;
+         5)
+          
+             echo " Exit.. "
+             exit            
+             ;;   
+          *)
+            echo"Enter right  option"
+            ;;
+     esac
+              
+     done
