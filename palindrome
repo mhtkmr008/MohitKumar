@@ -1,0 +1,54 @@
+#!/bin/bash
+
+read -p "Enter a word" word
+echo "$word">word.txt
+rev_word=$(rev word.txt)
+if [ "$word" = "$rev_word" ]
+then
+echo "Palindrome"
+else
+echo "not Palindrome"
+fi
+
+
+#!/bin/bash
+
+read -p "Enter a phrase: " phrase
+echo "$phrase" > phrase.txt  # Use ">" to write the phrase to the file
+
+# Use command substitution to reverse the phrase in phrase.txt and store it in rev_phrase
+rev_phrase=$(echo "$phrase" | rev)
+
+# Remove spaces from the original phrase and reversed phrase for comparison
+phrase_without_spaces=$(echo "$phrase" | tr -d ' ')
+rev_phrase_without_spaces=$(echo "$rev_phrase" | tr -d ' ')
+
+# Compare the cleaned input phrase with the cleaned reversed phrase
+if [ "$phrase_without_spaces" = "$rev_phrase_without_spaces" ]; then
+    echo "Palindrome"
+else
+    echo "Not a Palindrome"
+fi
+
+
+
+#!/bin/bash
+
+read -p "Enter multiple words (no spaces between words): " words
+echo "$words" > words.txt
+
+# Use command substitution to reverse the words in words.txt and store it in rev_words
+rev_words=$(echo "$words" | rev)
+
+# Remove spaces from the original words and reversed words for comparison
+words_without_spaces=$(echo "$words" | tr -d ' ')
+rev_words_without_spaces=$(echo "$rev_words" | tr -d ' ')
+
+# Compare the cleaned input sequence with the cleaned reversed sequence
+if [ "$words_without_spaces" = "$rev_words_without_spaces" ]; then
+    echo "Palindrome"
+else
+    echo "Not a Palindrome"
+fi
+
+
