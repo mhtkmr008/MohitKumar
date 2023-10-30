@@ -1,7 +1,7 @@
 #!/bin/bash
 
-read -p "1: Add password 2: check password 3:exit" choice
-while [ $choice -ne 3 ]
+read -p "1: Add password 2: check password 3:enter numbers 4:Asscending 5:Decending 6: Max 7:Min 8: exit" choice
+while [ $choice -ne 8 ]
 do
 read -p "Enter a choice" choice
 case $choice in
@@ -19,6 +19,31 @@ echo "Incoreect password"
 fi
 ;;
 3)
+for((i=1;i<=5;i++))
+do
+read -p "enter a number" num
+echo "$num">>numb.txt
+done
+;;
+4)
+echo "Accending order"
+sort -n numb.txt
+;;
+5)
+echo "Desendung order"
+sort -n -r numb.txt
+;;
+6)
+echo "Min"
+sort -n numb.txt | head -n 1
+;;
+7)
+echo "Max"
+sort -n -r numb.txt | head -n 1 
+;;
+8)
+rm numb.txt
+echo "num file removed"
 echo "EXIT"
 ;;
 *)
